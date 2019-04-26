@@ -1,0 +1,74 @@
+A line of people at an amusement park ride.
+
+The line is composed of members, represented as strings.
+There is a front to the line, as well as a back.
+When someone enters the line, place them at the end.
+People may leave the line whenever they see fit, and those behind them take their place.
+Given the above real-world information, use an array data structure to code the following solution.
+
+a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
+c) Find a person in line named "Josh." This function should return the position of 2 in the array, (recall that arrays are 0-based).
+d) Find a person in line named "Emily." What should your function return if it does not find the item in the array?
+e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+f) If Patrick wants to leave the line, how would you delete him from the array?
+
+```HTML
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+  <button onclick="cutter()">Add Melissa</button>
+  <button onclick="deleteRider()">Delete Patrick</button>
+  <p id="rideList"></p>
+  <p id="newRideList"></p>
+<body>
+</body>
+</html>
+```
+
+
+
+
+
+```Javascript
+var guests = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+var newGuest =["Mary"]
+var lineCutter = ["Melissa"]
+
+guests.push(...newGuest);
+console.log(guests);
+guests.forEach(function(name, index, array){
+  if(name === "Josh") {
+    console.log(name + " is in position number " + index);
+    return
+  }
+var findEmily = guests.find(function(element){
+  return element = "Emily";
+});
+  console.log(findEmily);
+  if (findEmily != true) {
+    console.log("Emily was not found")
+  }
+
+});
+function cutter() {
+guests.splice(1,0, "Melissa");
+  document.getElementById("rideList").innerHTML = "Ride Order:<br>" + guests;
+  }
+function deleteRider(){
+  guests.splice(4, 1,)
+    document.getElementById("newRideList").innerHTML = "Ride Order:<br>" + guests;
+  }
+```
+
+2) Provide another real-world example that you can model using a data structure.
+I would use the model if I were running an online shop. I would be able to code a line
+for any item that had a limited stock. It would create a first come, first serve function.FIFO
+
+3) How would your data structure allow developers to access and manipulate the data?
+I would use arrays to represent the items sold. they would be able to be changed according to the specific 
+information. The array structure would be able to work with POP and push commands to change the stock information
