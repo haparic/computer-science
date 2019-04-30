@@ -1,0 +1,109 @@
+1) What is the main difference between a stack and a queue?
+stacks use LIFO principle so the last thing inserted comes out first. insertion and deletion only happen at the top end of the list.
+uses push() and pop() for insertion and deletion
+queues use FIFO principle so the first thing inserted comes out first. insertion and deletion takes place on opposite ends of the list
+Uses enqueue and dequeue for insertion and deletion
+
+2) What are the similarities between stacks and queues?
+they both are linear data structures which are used to store elements. They both release elements one by one in an order.
+3) Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor
+such as Microsoft Word. Which data structure would you use for each option and why?
+I believe you would use LIFO for undo. undo takes of whatever is at the top of the stack and follows the principle.
+For REDO, I believe LIFO should also be used. A deleted item would go to another array where the top should interact first
+
+
+Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+I am going to first input the string in the correct order. I am going to create a function to have it run a for loop.
+the loop will be used to pop out and console.log every thing that comes out. 
+```Javascript
+var stack = [];
+stack.push("B");
+stack.push("L");
+stack.push("O");
+stack.push("C");
+stack.push("!");
+
+for (var i= 0; i <stack.length+4; i++) {
+  var output = stack.pop();
+  console.log(output)
+}
+```
+
+
+
+2.
+Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO 
+data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+
+
+
+var queue = []
+
+
+
+//from Bloc
+FUNCTION REVERSE(original)
+  INIT a new stack
+  FOR each character in original
+    CALL stack.push WITH character
+  END FOR
+  INIT reversed to empty string
+  WHILE stack is not empty
+    CALL stack.pop RETURNING character
+    APPEND character to reversed
+  END WHILE
+  RETURN reversed
+END FUNCTION
+
+reverse("gnirtS")
+#=> "String"
+reverse("racecaR")
+#=> "Racecar"
+//
+
+
+class Stack {
+   constructor() {
+     this.pop =function(queue){ //Pop removes elements from the stack
+       var newQueue = [];
+       var deleteItem = [];
+       
+       for (var i=0; i <queue.length; i++){
+         if (i== queue.length-1) {
+           deleteItem.push(queue[i]);
+         } else {
+           newQueue.push(queue[i]);
+         }
+       }
+       return deleteItem;
+     }
+   }
+}
+
+var stack = new Stack();
+console.log(stack.pop("Hugo"));
+
+3.
+Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+class Queue {
+   constructor(){
+     this.elements = []
+   }
+  enqueue(element)
+{    
+    this.elements.push(element);
+}
+  dequeue()
+{
+    return this.elements.shift();
+}
+}
+
+var queue = new Queue();
+
+queue.enqueue(5);
+console.log(queue);
+queue.dequeue();
+console.log(queue);
+
