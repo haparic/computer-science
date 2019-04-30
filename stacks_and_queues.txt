@@ -25,7 +25,7 @@ stack.push("!");
 
 for (var i= 0; i <stack.length+4; i++) {
   var output = stack.pop();
-  console.log(output)
+  console.log(output);
 }
 ```
 
