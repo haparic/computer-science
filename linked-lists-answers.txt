@@ -66,22 +66,22 @@ LinkedList.prototype.removeDuplicates = function () {
     }
 
     var head;
-    var p2;
+    var nextTo;
     var nodes = {};
 
     head = this.head;
-    p2 = head.next;
+    nextTo = head.next;
     nodes[head.data] = true;
 
-    while (p2) {
-        var data = p2.data;
+    while (nextTo) {
+        var data = nextTo.data;
         if (nodes[data]) {
-            head.next = p2.next;
+            head.next = nextTo.next;
         } else {
             nodes[data] = true;
-            head = p2;
+            head = nextTo;
         }
-        p2 = p2.next;
+        nextTo = nextTo.next;
     }
 };
 
