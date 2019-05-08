@@ -40,11 +40,14 @@ LinkedList.prototype.push = function(val){
   } 
   else{
     current = this.head;
-    while(current.next){
-      current.next;
+     while(current.next){  
+        current = current.next;
+      }
+      
+      current.next = node;
+      this.length += 1;
+      return node;
     }
-    current.next = node;
-  }
 }
 
 
