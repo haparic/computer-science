@@ -1,16 +1,75 @@
 1.
 Using proper pseudo-code, describe the following primitive algorithms:
 
-Making coffee;
+FUNCTION makeCoffee;
+SET number of cups
+SET filter to empty
+    IF filter = empty THEN
+        FOR number of cups
+        ADD equal number of coffee to filter
+        END FOR
+    place filter in coffeeMaker THEN SET to full
+
+    ELSE IF filter = full THEN
+        FOR number of cups
+        ADD equal number of water
+        END FOR
+        SET coffeeMaker to ON
+    END IF
+    WHILE coffeeMaker = ON 
+    if potFill= notFilled
+    wait
+    ELSE IF potFill = filled
+    pour cup FOR EACH number of cups
+    END IF
+    END WHILE
+
 Washing dishes;
-A choice of your own.
+
+FUNCTION washDishes
+GET dishSoap
+Set water to ON
+SET EACH dish to dirty
+IF dish = dirty THEN 
+clean dish with dishSoap
+SET dish to suds
+
+ELSE IF dish = suds THEN
+Wash dishSoap away with water
+set dish to drying
+
+ELSE IF dish = drying THEN
+LET dish dry and put away
+SET dish to complete.
+
+FUNCTION buyShoes
+GET website and cardInfo
+Set website to currentPage
+
+IF shoe = available THEN
+ADD shoe to cart
+SET shoe to added
+ELSE IF shoe = added
+use cardInfo to purchase shoe
+set shoe to copped
+
+ELSE IF shoe = copped THEN
+console.log("Success! Congrats!")
+
+ELSE IF shoe = unavailable THEN
+console.log("I'm sorry,it is no longer available")
+
 
 2.
 As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a 
 situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need
 to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search 
 engines; what about each of your cases make them stand out?
-
+Hungry Jack- company makes products with simple instructions(algorithms) to make food. usually by just adding water 
+Uber- tracked data to figure out when their service is most popular and created surge pricing
+Pandora- uses algorithms to make playlist based on your likes. It will start noticing trends such as "likes 90s pop music with female voice"
 
 3.
 Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+an efficient algorithm will be able to  perform a task with as little cod as possible that does not repeat.
+inefficient code may have steps that repeat the same process and may be written out too long. may not be compartmentlaized completely
