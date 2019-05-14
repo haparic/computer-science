@@ -58,48 +58,64 @@ Example
 Input: a -> c -> d -> d -> a
 Output: a -> c -> d
 
-function LinkedList () {
-    this.head = null;
+function LinkedList(){
+  this.head= null; //start with an empty list that makes a null value
+  this.length=0;
 }
 
-LinkedList.prototype.removeDuplicates = function () {
-    if (!this.head || !this.head.next) {
-      console.log('No duplicates were found.');
+LinkedList.prototype.push = function(value){  
+    var node = {
+       value: value,
+       next: null
+    }
+  
+    if(!this.head){
+      this.head = node;  
+      this.length += 1;    
+      return node;
+    }
+    else{
+      current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+      current.next = node;
+      this.length += 1;
+      return node;
+    }
+  }
+
+LinkedList.prototype.removeDuplicate = function(){
+ if (!this.head || !this.head.next) {
+      console.log("No duplicates were found");
       return;
-    }
+  }
 
-    var head;
-    var nextTo;
-    var nodes = {};
-
-    head = this.head;
-    nextTo = head.next;
-    nodes[head.data] = true;
-
-    while (nextTo) {
-        var data = nextTo.data;
-        if (nodes[data]) {
-            head.next = nextTo.next;
+    var thisNode = this.head;
+    while (thisNode != null) {
+      var lastNode = thisNode;
+      var nextNode = thisNode.next;
+      while (nextNode != null) {
+        if (thisNode.value == nextNode.value) {
+          lastNode.next = nextNode.next;
+          this.length --;
         } else {
-            nodes[data] = true;
-            head = nextTo;
+          lastNode = nextNode;
         }
-        nextTo = nextTo.next;
+        nextNode = nextNode.next;
+      }
+      thisNode = thisNode.next;
     }
-};
+    return this;
+  }
 
-var list = new LinkedList();
-list.push('a'); 
-list.push('a'); 
-list.push('b'); 
-list.push('c'); 
-list.push('c');
-list.push('d');
-list.push('e');
-
-list.removeDuplicates();
-console.log(list)
-
+list= new LinkedList()
+list.push("a");
+list.push("a");
+list.push("b");
+list.push("c");
+list.push("d");
+list.removeDuplicate()
 
 
 3.
