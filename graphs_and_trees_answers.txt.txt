@@ -1,0 +1,239 @@
+1. What is a binary tree and what makes it unique to other trees?
+the BST is dependent upon the order inserted, it also contains left and right variables to it. Each node can have 2 child nodes from the trr
+2. What is a heuristic?
+It is guessing instead of using actual data in order to cut down on processing data. It becomes faster but less reliable
+3. What is another problem besides the shortest-path problem that requires the use of heuristics?
+heuristics could be used to try and classify aniumals by species according to traits without lookign at dna or genealogy
+4. What is the difference between a depth-first search and a breadth-first search?
+DFS travels down a single branch until it can no longer go down the path and moves to the next branch. BFS scans the entire row 
+of nodes before moving down to the next row.
+5.Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+it a graph with ambiguous start and end points. It does not contain loops and does not assing travel cost to nodes
+6. What kind of graph is a binary search tree?
+directed, acyclic, unweighted
+
+
+Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+class searchNode {
+ constructor(value) {
+   this.value = value;
+   this.left = undefined;
+   this.right = undefined;
+ }
+}
+class BST {
+ constructor() {
+   this.root = undefined;
+ }
+
+ //node is created according to number input I placed.
+ addValue(value) {
+   var newNode = new searchNode(value);
+
+   if (this.root === undefined) { //If the root value is undefined, then make the first input into the root
+     this.root = newNode
+   } else {
+     this.insertNode(this.root, newNode);
+   }
+ }
+
+ insertNode(node, newNode) {
+   if (newNode.value < node.value) {
+     //if the number is less than the node number, go left
+     if (node.left === undefined) {
+       node.left = newNode
+     } else {
+       this.insertNode(node.left, newNode)
+     }
+   } else {
+     if (node.right === undefined) {
+       node.right = newNode
+     } else {
+       this.insertNode(node.right, newNode)
+     }
+   }
+ }
+
+ search(node, value) {
+   if (node === undefined) {
+     return undefined;
+   } else if (value < node.value) {
+     return this.search(node.left, value);
+   } else if (value > node.value) {
+     return this.search(node.right, value);
+   } else {
+     return node;
+   }
+ }
+}
+
+var newBST = new BST();
+newBST.addValue(8)
+newBST.addValue(2)
+newBST.addValue(28)
+newBST.addValue(22)
+newBST.search(8)
+
+Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(data) {
+    // create node with by using the data received
+    var newNode = new Node(data);
+    if(this.root === null) { //make it the root if it is currently null
+      this.root = newNode;
+    } else { //or else place it in the BST
+      this.insertNode(this.root, newNode);
+    }
+  }
+
+  insertNode(node, newNode) { //insert node into tree, place value to left if it is less than node
+    if(newNode.data < node.data) {
+      //if left is null insert node here
+      if(node.left === null) {
+        node.left = newNode
+      } else {
+        this.insertNode(node.left, newNode)
+      }
+    } else {
+      if(node.right === null) {
+        node.right = newNode
+      } else {
+        this.insertNode(node.right, newNode)
+      }
+    }
+  }
+
+  contains(data) {
+    let current = this.root
+    while(current) {
+      if(data === current.data) {
+        return true
+      }
+      if(data < current.data) {
+        current = current.left
+      } else {
+        current = current.right
+      }
+    }
+    return false
+  }
+
+  print() {
+    if(!this.root) {
+      return "No root found"
+    }
+    let newline = new Node('|')
+    let queue = [this.root, newline]
+    let string = ''
+    while(queue.length) {
+      let node = queue.shift()
+      string += node.data.toString() + ''
+      if(node === newline && queue.length) {
+        queue.push(newline)
+      }
+      if(node.left) {
+        queue.push(node.left) 
+      }
+      if(node.right) {
+        queue.push(node.right)
+      }
+    }
+    console.log(string.slice(0, -2).trim())
+  }
+
+  printBST() {
+    if(!this.root) {
+      return "No root found"
+    }
+    let newline = new Node('\n')
+    let queue = [this.root, newline]
+    let string = ''
+    while(queue.length) {
+      let node = queue.shift()
+      string += node.data.toString() + (node.data !== '\n' ? ' ' : '')
+      if(node === newline && queue.length) {
+        queue.push(newline)
+      }
+      if(node.left) {
+        queue.push(node.left)
+      }
+      if(node.right) {
+        queue.push(node.right)
+      }
+    }
+    console.log(string.trim())
+  }
+
+  lowestCommonAncestor(n1, n2) {
+    let current = this.root
+    if(n1 > n2) {
+      let temp = n1
+      n1 = n2
+      n2 = temp
+    }
+    if(current.data == n1 || current.data == n2) {
+      return current
+    }
+    if(current.data < n1) {
+      current = current.right
+    }
+    if(current.data > n2) {
+      current = current.left
+    }
+    return current
+  }
+
+  findLevel(root, data, d, level) {
+    if(!root) {
+      return
+    }
+
+    if(root.data == data) {
+      d.push(level)
+      return
+    }
+    if(root.data < data) {
+      return this.findLevel(root.right, data, d, level + 1)
+    }
+    if(root.data > data) {
+      return this.findLevel(root.left, data, d, level + 1)
+    }
+  }
+
+  findDistance(root, n1, n2) {
+    let lca = this.lowestCommonAncestor(n1, n2)
+    let d1 = []
+    let d2 = []
+    if (lca) {
+      this.findLevel(lca, n1, d1, 0)
+      this.findLevel(lca, n2, d2, 0)
+      return d1[0] + d2[0]
+    } else {
+      return -1
+    }
+  }
+}
+
+var newBST = new BST()
+newBST.insert(8)
+newBST.insert(24)
+newBST.insert(4)
+newBST.insert(16)
+newBST.insert(1)
+newBST.insert(12)
+newBST.print()
+newBST.printBST()
+console.log(newBST.lowestCommonAncestor(4, 24))
+newBST.findDistance(newBST, 12, 16)
