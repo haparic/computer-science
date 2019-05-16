@@ -1,0 +1,40 @@
+1. Define and compare recursion and iteration.
+in recursion, the method making the call is the same also being called. In iteration, a loop is repeated until specific conditions are met.
+2. Name five algorithms that are commonly implemented by recursion.
+factorial, Fibonacci numbers, greatest common denominator, quick sort, tower of Hanoi problem
+3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+a Binary search tree is a good example because it has many layers to it and it can call upon itself while running.
+4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+recursive values include base cases which are conditions that stop the loop. Current maximum is able to be implemented in 
+iterative form because it is bringing in a single value and comparing it to one value(current maximum). the recursive must state what to do with other number and becomes more complex.
+
+5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+function countItems(array){
+  var count = 0;
+  for(let i=0; i<array.length; i++){
+    if(typeof array[i] === "object"){
+      count += countItems(array[i]);
+    } else {
+      count++;
+    }
+  } return count;
+}
+console.log(countItems([1,2,3,4,5,6,7,8]))
+console.log(countItems([1,[2,3],4,[5,6],7,8]))
+
+
+6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+function isPalindrome(string){
+  if(string.length === 0 || string.length === 1){ //if the first letter in the string is equal to the second, return true
+    return true;
+  }
+  if(string[0] === string[string.length -1]) {
+    return isPalindrome(string.slice(1, string.length - 1)); //if the first and last letter match, then splice it and run isPalindrome again
+  }
+  return false; //if it runs but it is not the same, it is then false and won't loop
+}
+console.log(isPalindrome("hahahahah"))
+console.log(isPalindrome("Bloc"))
+
+7.Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion
+because the function is caling upon itself by looking for the term inputted. By clicking on the function recursion is calling itself being repeated. 
