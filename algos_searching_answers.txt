@@ -1,0 +1,49 @@
+1. What is a real-life scenario that uses linear search?
+student lists are placed alphabetically, a teacher might use a linear search to look for students sinc it is too few to do a binary search
+2. What is a real-life scenario that uses binary search?
+playing a game like 21 questions to determine what the person is supposed to be
+3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+7
+4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+3
+5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+a linear search is better for this scenario, binary searches can not work with unsorted collections.
+6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+a binary search will be best for sorted collections because it will be able to determine if it needs to go higher or lower and split it in half by value
+
+
+Programming Assignment:
+You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+function search(array, word){
+  var left = 0;
+  var right = array.length - 1;
+  
+  while(left <= right) {
+    let mid = Math.round((left + right)/2)
+    if (array[mid] === word){
+      return `${array[mid]} is in position ${mid + 1} of this list.`;
+    } else if (array[mid]< word){
+      left = mid + 1;
+    } else if (array[mid] > word){
+      right = mid -1
+    } 
+  }
+  return null
+}
+  
+  var dictionary = ["Ascot", "Albatross", "Amoeba", "Beer","Bubbles", "Caesar", "Chile"];
+
+console.log(search(dictionary, "Albatross"));
+
+You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+function findFish(tank, fish){
+    for(let i = 0; i < tank.length; i++) {
+      if (tank[i] === fish){
+        return fish
+      } 
+    }
+    return null
+}
+
+var fishTank =["one fish", "two fish", "red fish", "blue fish", "white-spotted goldfish"];
+console.log(findFish(fishTank,"white-spotted goldfish"))
