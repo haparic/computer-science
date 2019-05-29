@@ -56,13 +56,13 @@ class BST {
 
  search(node, value) {
    if (node === undefined) {
-     return undefined;
+     return false;
    } else if (value < node.value) {
      return this.search(node.left, value);
    } else if (value > node.value) {
      return this.search(node.right, value);
    } else {
-     return node;
+     return true;
    }
  }
 }
