@@ -1,0 +1,36 @@
+1. Write pseudocode for bubble sort.
+
+FUNCTION bubbleSort(array)
+repeat
+    SET swapped to false
+     FOR i = FIRST INDEX of array to LAST INDEX of array - 1
+       IF array[i] > array[i + 1] THEN
+         SET tmp to array[i]
+         SET array[i] to array[i + 1]
+         SET array[i + 1] to tmp
+         SET swapped to true
+       END IF
+     END FOR
+   UNTIL swapped is FALSE
+   RETURN array
+ END FUNCTION
+
+
+  2. Write pseudocode for quicksort.
+
+  FUNCTION quicksort(arr, low, high)
+    IF (low < high) THEN
+    pi= partition(arr, low, high);
+    quickSort(arr, low, pi - 1);  
+    quickSort(arr, pi + 1, high);
+    END IF
+END FUNCTION
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+Quicksort loops through the array once then it sorts through the data. This shows that it gets faster as it itertates. it can be sen that it has an efficiency of 0(n log n)
+Mergesort is quick because it is able to handle large amounts of data without having to keep iterating over the same array. It divides and sorts the array then merges it together.m it has the efficiency of 0(n log n)
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+Bucket Sort is best used for larger amounts of data that are evenly distributed. This is because the Bucket sort works by taking data and placing equally into buckets.
+The buckets are individually sorted and then brought together to merge the now sorted array.
