@@ -72,7 +72,8 @@ newBST.addValue(8)
 newBST.addValue(2)
 newBST.addValue(28)
 newBST.addValue(22)
-newBST.search(8)
+newBST.search(newBST.root, 3)
+//newBST.search(newBST.root, 8)
 
 Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 class Node {
