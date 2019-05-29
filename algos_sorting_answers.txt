@@ -1,20 +1,18 @@
-1. Write pseudocode for bubble sort.
-
-FUNCTION bubbleSort(array)
-repeat
-    SET swapped to false
-     FOR i = FIRST INDEX of array to LAST INDEX of array - 1
-       IF array[i] > array[i + 1] THEN
-         SET tmp to array[i]
-         SET array[i] to array[i + 1]
-         SET array[i + 1] to tmp
-         SET swapped to true
-       END IF
-     END FOR
-   UNTIL swapped is FALSE
-   RETURN array
- END FUNCTION
-
+1. Implement a solution for bubble sort.
+function bubbleSort(arr){
+   var length = arr.length;
+   for (var i = length-1; i>=0; i--){
+     for(var n = 1; n<=i; n++){
+       if(arr[n-1]>arr[n]){
+           var temp = arr[n-1];
+           arr[n-1] = arr[n];
+           arr[n] = temp;
+        }
+     }
+   }
+   return arr;
+}
+console.log(bubbleSort([6,11,12,8,5,9])); 
 
   2. Write pseudocode for quicksort.
 
